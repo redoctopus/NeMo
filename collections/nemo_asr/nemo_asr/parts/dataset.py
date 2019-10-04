@@ -90,7 +90,7 @@ class AudioDataset(Dataset):
 
         Args:
             manifest_filepath: Path to manifest json as described above. Can
-            be coma-separated paths.
+            be comma-separated paths.
             labels: String containing all the possible characters to map to
             featurizer: Initialized featurizer class that converts paths of
             audio to feature tensors
@@ -120,6 +120,8 @@ class AudioDataset(Dataset):
                     self.manifest.filtered_duration / 3600))
 
     def __getitem__(self, index):
+        # f, fl -> features, features length
+        # t, tl -> transcript, transcript length
         sample = self.manifest[index]
         if self.load_audio:
             duration = sample['duration'] if 'duration' in sample else 0

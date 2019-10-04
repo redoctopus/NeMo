@@ -7,7 +7,7 @@ A typical application using NeMo APIs consists of 3 logical stages:
 2) Defining a Directed Acyclic Graph (DAG) of :class:`NeuralModule<nemo.core.neural_modules.NeuralModule>`
 3) Call to "action" such as :class:`train<nemo.core.neural_factory.Actions.train>`
 
-NeMo follows *lazy execution* model - actual computation happen only after training or inference is called.
+NeMo follows a *lazy execution* model - the actual computations happen only after training or inference is called.
 
 :class:`NeuralModule<nemo.core.neural_modules.NeuralModule>` is an abstraction between a layer and a neural network, for example: encoder, decoder, language model, acoustic model, etc. Each :class:`NeuralModule<nemo.core.neural_modules.NeuralModule>` computes a set of outputs from a set of inputs.
 Every :class:`NmTensor<nemo.core.neural_types.NmTensor>` has :class:`NeuralType<nemo.core.neural_types.NeuralType>` .

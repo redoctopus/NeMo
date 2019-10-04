@@ -51,7 +51,7 @@ transcript_n}
             manifest JSON.
             Defaults to None.
         normalize_transcripts (bool): Whether to use automatic text cleaning.
-            It is highly recommended to manually clean text ffor best results.
+            It is highly recommended to manually clean text for best results.
             Defaults to True.
         trim_silence (bool): Whether to use trim silence from beginning and end
             of audio signal using librosa.effects.trim().

@@ -1,5 +1,5 @@
 # Copyright (c) 2019 NVIDIA Corporation
-"""This file contains NeuralModule and NmTensor classes."""
+"""This file contains NeuralModule class."""
 import uuid
 import logging
 from abc import ABC, abstractmethod

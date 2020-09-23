@@ -495,6 +495,7 @@ class TarredAudioToTextDataLayer(DataLayerNM):
         self.collate_fn = partial(seq_collate_fn, token_pad_value=pad_id)
 
         # Check for distributed and partition shards accordingly
+        """
         if torch.distributed.is_available() and torch.distributed.is_initialized():
             global_rank = torch.distributed.get_rank()
             world_size = torch.distributed.get_world_size()
@@ -511,6 +512,7 @@ class TarredAudioToTextDataLayer(DataLayerNM):
             begin_idx = (len(audio_tar_filepaths) // world_size) * global_rank
             end_idx = begin_idx + (len(audio_tar_filepaths) // world_size)
             audio_tar_filepaths = audio_tar_filepaths[begin_idx:end_idx]
+        """
 
         # Put together WebDataset
         self._dataset = (
@@ -542,6 +544,7 @@ class TarredAudioToTextDataLayer(DataLayerNM):
                     file_id, _ = os.path.splitext(os.path.basename(audio_filename))
                     if file_id in self.collection.mapping:
                         return audio_bytes, audio_filename
+                    print(f"({torch.distributed.get_rank()}): skipped a filtered file")
 
         return TarredAudioFilter(self.collection)
 
